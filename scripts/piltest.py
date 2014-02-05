@@ -18,6 +18,6 @@ for j in range(changed.size[1]): # For every single pixel
 
 changed.save("images/test.jpg", quality=5)
 
-new = Image.open("images/test.jpg").show()
+new = Image.open("images/test.jpg").show() # Open image again with worse quality
 
 # helpful documentation for this library @ http://effbot.org/imagingbook/image.htm

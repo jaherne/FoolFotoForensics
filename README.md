@@ -1,8 +1,16 @@
 FoolFotoForensics
 =================
 
-Purpose of the tool: Prevent Error Level Analysis from returning useful data when analyzing a given image. 
+Purpose of the tool: 
+Prevent Error Level Analysis from returning useful data when analyzing a given image. 
 
-Current Status: Only script written so far can return the Luminance or "Y" level of an image, showing brightness. The ability to edit pixels on this Y Level has also been added. 
+Install Steps:
+1.	Install Pillow "pip install pillow"
+2.	Install libjpeg-dev package
 
-Next Steps: Detail how ELA is performed from looking at the Y level. Add ELA functionality to the tool. Begin to discuss how ELA can be fuzzed away without attacking the integrity of the original picture. 
+Current Status: 
+Script takes the given image and converts it into YCbCr format. The brightness levels can be changed before it is saved at a lower quality than the original image. 
+
+Next Steps: 
+1.	Build out script functionality (command arguments, etc)
+2.	Determine error levels of given image.  
