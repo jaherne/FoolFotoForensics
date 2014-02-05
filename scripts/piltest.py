@@ -1,9 +1,18 @@
 #!/usr/bin/env python
 from PIL import Image, ImageFilter
+import argparse
+
+# parse command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("image", help="image you want to perform ELA on")
+parser.add_argument("-v", "--verbose", help="verbose output", action="store_true")
+args = parser.parse_args()
+if (args.verbose):
+	print(args.image)
  
 original = Image.open("images/books-edited.jpg") # load an image from the hard drive
 changed = original.convert("YCbCr") # Convert from RGB to YCbCr
-changed.show()
+#changed.show()
 pixarr = changed.load() # load pixels from image into array
 
 for j in range(changed.size[1]): # For every single pixel
@@ -16,8 +25,8 @@ for j in range(changed.size[1]): # For every single pixel
 
 #changed.show() # will print it as dark
 
-changed.save("images/test.jpg", quality=5)
+#changed.save("images/test.jpg", quality=5)
 
-new = Image.open("images/test.jpg").show() # Open image again with worse quality
+#new = Image.open("images/test.jpg").show() # Open image again with worse quality
 
 # helpful documentation for this library @ http://effbot.org/imagingbook/image.htm
