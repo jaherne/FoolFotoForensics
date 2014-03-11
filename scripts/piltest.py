@@ -1,6 +1,7 @@
-#!/usr/bin/env python
+#!/usr/local/bin/python
 from PIL import Image, ImageFilter
 import argparse, os
+import fff
 
 # parse command line arguments
 parser = argparse.ArgumentParser()
@@ -13,22 +14,19 @@ qual = 75
 scale = 15
 
  # load the original and convert to YCbCr
-original = Image.open(args.image) 
 if (args.verbose):
-	print("Opening: " + args.image)
-changed = original.convert("YCbCr")
-if (args.verbose):
-	print("Converting to YCbCr")
+	print("Opening: " + args.image + "In YCbCr")
+original = fff.openImage(args.image)
 if (args.show):
 	original.show()
 
 # load pixels from converted image into array
-pixarr = changed.load() 
+pixarr = original.load() 
 if (args.verbose):
 	print("Loading image into pixel array")
 
 # save image at lower quality
-changed.save("images/test.jpg", quality=qual)
+original.save("images/test.jpg", quality=qual)
 if (args.verbose):
 	print("Saving at quality: " + str(qual))
 
@@ -52,8 +50,7 @@ for n in range(new.size[1]):
 		err[m,n] = (a*scale, b*scale, c*scale)
 		#print(str(err[m,n]))
 	
-if (args.show):	
+if not(args.show):	
 	new.show()
-
 # cleanup
 os.remove("images/test.jpg")
