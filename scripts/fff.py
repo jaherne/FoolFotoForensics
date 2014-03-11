@@ -40,7 +40,6 @@ def ela(origArr, newArr, scale, image, value = "Y"):
 		for x in range (image.size[0]):
 			if value == "Y":
 				Yerr = abs(origArr[x,y][0] - newArr[x,y][0])
-				#print Yerr + "\n"
 				Cerr = origArr[x,y][1]
 				Cberr = origArr[x,y][2]
 			if value == "Cb":
@@ -55,7 +54,7 @@ def ela(origArr, newArr, scale, image, value = "Y"):
 
 	return errArr
 
-# fuzzELA
+# fuzz
 # Given the error levels, this will fuzz the original 
 # pixels to the resaved values. Requires fff.ela to 
 # have been run already. 
@@ -67,11 +66,16 @@ def ela(origArr, newArr, scale, image, value = "Y"):
 #	scale: The magnification amount
 # Returns:
 #	fuzzArr: The original picture's pixel array with fuzzing
-def fuzzELA(origArr, newArr, errArr, image, scale):
+def fuzz(origArr, newArr, errArr, image, scale):
 	fuzzArr = origArr
+	difflist = []
 	for y in range(image.size[1]):
 		for x in range(image.size[0]):
-			Yerr = errArr[x,y][0] / scale
-			fuzzArr = newArr[x,y][0]
-
+			diff = (errArr[x,y][0] + errArr[x,y][1] + errArr[x,y][2]) / scale
+			#difflist.append(diff)
+			if diff >= 40:
+			#	print diff
+				fuzzArr[x,y] = (newArr[x,y][0], newArr[x,y][1], newArr[x,y][2])
+				
+	#print max(difflist)
 	return fuzzArr
