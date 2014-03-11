@@ -41,8 +41,8 @@ if (args.verbose):
 # the important part
 # absolute value original Y values - new Y values
 # multiply everything by the set scale 
-errArr = newarr
-errArr = fff.ela(pixarr, newarr, scale, new, "Y")
+errArr = pixarr
+errArr = fff.ela(pixarr, newarr, scale, original, "Y")
 if(args.verbose):
 	print("Performing ELA")
 if (args.show):	
@@ -51,6 +51,10 @@ if (args.show):
 new.save("images/ela.jpg", quality=100)
 if (args.verbose):
 	print("Saving ELA of image")
+
+fzzArr = pixarr
+fuzzArr = fff.fuzzELA(pixarr, newarr, errArr, original, scale)
+original.save("images/asdf.jpg", quality=100)
 
 # cleanup
 os.remove("images/test.jpg")

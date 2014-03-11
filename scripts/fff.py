@@ -26,7 +26,7 @@ def openImage(file):
 # 	origArr: The pixel array of the original image
 #	newArr: The pixel array of the resaved image
 #	scale: The magnification amount 
-#	image: The PIL image object
+#	image: The original image object
 #	value: Y, Cb, or Cr to do ela on. Defaults to Y
 # Returns: 
 #	errArr: The pixel array of the error analyis
@@ -54,3 +54,24 @@ def ela(origArr, newArr, scale, image, value = "Y"):
 			errArr[x,y] = (Yerr * scale, Cerr * scale, Cberr * scale)
 
 	return errArr
+
+# fuzzELA
+# Given the error levels, this will fuzz the original 
+# pixels to the resaved values. Requires fff.ela to 
+# have been run already. 
+# Parameters:
+#	origArr: The pixel array of the original image
+#	newArr: The pixel array of the resaved image
+#	errArr: The pixel array of the error analysis
+#	image: The original image object
+#	scale: The magnification amount
+# Returns:
+#	fuzzArr: The original picture's pixel array with fuzzing
+def fuzzELA(origArr, newArr, errArr, image, scale):
+	fuzzArr = origArr
+	for y in range(image.size[1]):
+		for x in range(image.size[0]):
+			Yerr = errArr[x,y][0] / scale
+			fuzzArr = newArr[x,y][0]
+
+	return fuzzArr
