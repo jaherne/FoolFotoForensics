@@ -12,37 +12,35 @@ args = parser.parse_args()
 qual = 75
 scale = 15
 
- 
-original = Image.open(args.image) # load an image
+ # load the original and convert to YCbCr
+original = Image.open(args.image) 
 if (args.verbose):
 	print("Opening: " + args.image)
-changed = original.convert("YCbCr") # Convert from RGB to YCbCr
+changed = original.convert("YCbCr")
 if (args.verbose):
 	print("Converting to YCbCr")
 if (args.show):
 	original.show()
 
-pixarr = changed.load() # load pixels from image into array
+# load pixels from converted image into array
+pixarr = changed.load() 
 if (args.verbose):
 	print("Loading image into pixel array")
 
-for j in range(changed.size[1]): # For every single pixel
-	for i in range (changed.size[0]):
-		#print(pixarr[i,j])
-		place=pixarr[i,j][1]
-		holder=pixarr[i,j][2]
-		#pixarr[i,j] = (0,place,holder) # Change the luminance
-		#print(pixarr[i,j])
-
+# save image at lower quality
 changed.save("images/test.jpg", quality=qual)
 if (args.verbose):
 	print("Saving at quality: " + str(qual))
 
-new = Image.open("images/test.jpg").convert("YCbCr") # Open image again with worse quality
+# open worse quality image
+new = Image.open("images/test.jpg").convert("YCbCr") 
 newarr = new.load()
 if (args.show):
 	new.show()
 
+# the important part
+# absolute value original Y values - new Y values
+# multiply everything by the set scale 
 err = newarr
 for n in range(new.size[1]):
 	for m in range (new.size[0]):
@@ -53,8 +51,9 @@ for n in range(new.size[1]):
 		#print(newarr[m,n])
 		err[m,n] = (a*scale, b*scale, c*scale)
 		#print(str(err[m,n]))
-		
-new.show()
+	
+if (args.show):	
+	new.show()
 
-os.remove("images/test.jpg") # cleanup
-# helpful documentation for this library @ http://effbot.org/imagingbook/image.htm
+# cleanup
+os.remove("images/test.jpg")
