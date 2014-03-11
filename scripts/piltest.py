@@ -18,7 +18,7 @@ original = fff.openImage(args.image)
 if (args.show):
 	original.show()
 if (args.verbose):
-	print("Opening: " + args.image + "In YCbCr")
+	print("Opening: " + args.image + " in YCbCr")
 
 # load pixels from converted image into array
 pixarr = original.load() 
@@ -35,14 +35,22 @@ new = fff.openImage("images/test.jpg")
 newarr = new.load()
 if (args.show):
 	new.show()
+if (args.verbose):
+	print("Opening lower quality image")
 
 # the important part
 # absolute value original Y values - new Y values
 # multiply everything by the set scale 
 errArr = newarr
 errArr = fff.ela(pixarr, newarr, scale, new, "Y")
-	
+if(args.verbose):
+	print("Performing ELA")
 if (args.show):	
 	new.show()
+
+new.save("images/ela.jpg", quality=100)
+if (args.verbose):
+	print("Saving ELA of image")
+
 # cleanup
 os.remove("images/test.jpg")
