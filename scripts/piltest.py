@@ -14,11 +14,11 @@ qual = 75
 scale = 15
 
  # load the original and convert to YCbCr
-if (args.verbose):
-	print("Opening: " + args.image + "In YCbCr")
 original = fff.openImage(args.image)
 if (args.show):
 	original.show()
+if (args.verbose):
+	print("Opening: " + args.image + "In YCbCr")
 
 # load pixels from converted image into array
 pixarr = original.load() 
@@ -31,7 +31,7 @@ if (args.verbose):
 	print("Saving at quality: " + str(qual))
 
 # open worse quality image
-new = Image.open("images/test.jpg").convert("YCbCr") 
+new = fff.openImage("images/test.jpg")
 newarr = new.load()
 if (args.show):
 	new.show()
@@ -39,18 +39,10 @@ if (args.show):
 # the important part
 # absolute value original Y values - new Y values
 # multiply everything by the set scale 
-err = newarr
-for n in range(new.size[1]):
-	for m in range (new.size[0]):
-		a = abs(pixarr[m,n][0] - newarr[m,n][0])
-		b = pixarr[m,n][1]#abs(pixarr[m,n][1] - newarr[m,n][1])
-		c = pixarr[m,n][2]#abs(pixarr[m,n][2] - newarr[m,n][2])
-		#print(pixarr[m,n])		
-		#print(newarr[m,n])
-		err[m,n] = (a*scale, b*scale, c*scale)
-		#print(str(err[m,n]))
+errArr = newarr
+errArr = fff.ela(pixarr, newarr, scale, new, "Y")
 	
-if not(args.show):	
+if (args.show):	
 	new.show()
 # cleanup
 os.remove("images/test.jpg")
