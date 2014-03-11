@@ -9,11 +9,10 @@ Install Steps:
 2.	Install libjpeg-dev package
 
 Current Status:  
-Script takes the given image and converts it into YCbCr format. The brightness levels can be changed before it is saved at a lower quality than the original image. 
+Script reads in an image and converts to YCbCr. It is then saved at a lower quality. A third image is created that consists of the delta between the Y values, multiplied by a hardcoded scale. 
 
 Next Steps:   
-1.	Build out script functionality (command arguments, etc)
-2.	Determine error levels of given image  
-3.	Isolate areas with high error levels  
-4.	Change brightness such that the error level is minimized  
-5.	Save back to original iimage.
+1.	Determine error levels of given image  
+2.	Isolate areas with high error levels  
+3.	Change brightness such that the error level is minimized  
+4.	Save back to original iimage.
