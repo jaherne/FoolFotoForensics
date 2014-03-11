@@ -52,9 +52,9 @@ new.save("images/ela.jpg", quality=100)
 if (args.verbose):
 	print("Saving ELA of image")
 
-fzzArr = pixarr
+'''fuzzArr = pixarr
 fuzzArr = fff.fuzzELA(pixarr, newarr, errArr, original, scale)
 original.save("images/asdf.jpg", quality=100)
-
+'''
 # cleanup
 os.remove("images/test.jpg")
