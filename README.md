@@ -20,8 +20,8 @@ Next Steps:
 4.	Test lots and lots
 
 
-Completed:
-~~1.  Build out script functionality (command arguments, etc)~~ 
+Completed:  
+~~1.  Build out script functionality (command arguments, etc)~~      
 ~~2.	Determine error levels of given image~~  
 ~~3.	Isolate areas with high error levels~~  
 ~~4.	Change brightness such that the error level is minimized~~  
