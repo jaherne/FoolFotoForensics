@@ -19,9 +19,10 @@ finalArr = final.load()
 
 elaArr = fff.ela(origArr, elaArr, 15, original)
 ela.show()
+ela.save("images/pretool.jpg")
 
 fuzzArr = fff.fuzz(fuzzArr, newArr, elaArr, original, 15)
 
 
-fuzz.save("images/asdf.jpg")
+fuzz.save("images/books-posttool.jpg")
 os.remove("images/test.jpg")

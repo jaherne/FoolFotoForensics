@@ -48,7 +48,7 @@ if(args.verbose):
 if (args.show):	
 	new.show()
 
-new.save("images/ela.jpg", quality=100)
+new.save("images/posttool.jpg", quality=100)
 if (args.verbose):
 	print("Saving ELA of image")
 
