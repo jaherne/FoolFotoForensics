@@ -2,7 +2,7 @@ FoolFotoForensics
 =================
 
 Purpose of the tool:   
-Prevent Error Level Analysis from returning useful data when analyzing a given image. 
+Prevent Error Level Analysis from returning useful data when analyzing a given image. An example of the tool in use can be seen here: http://imgur.com/a/Kcfk3
 
 Install Steps:  
 1.	Install Pillow "pip install pillow"  
