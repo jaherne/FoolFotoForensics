@@ -72,10 +72,7 @@ def fuzz(origArr, newArr, errArr, image, scale):
 	for y in range(image.size[1]):
 		for x in range(image.size[0]):
 			diff = (errArr[x,y][0] + errArr[x,y][1] + errArr[x,y][2]) / scale
-			#difflist.append(diff)
 			if diff >= 40:
-			#	print diff
 				fuzzArr[x,y] = (newArr[x,y][0], newArr[x,y][1], newArr[x,y][2])
 				
-	#print max(difflist)
 	return fuzzArr
