@@ -20,7 +20,7 @@ Next Steps:
 4.	Test lots and lots
 
 
-Completed:
+Completed:  
 ~~1.  Build out script functionality (command arguments, etc)~~ 
 ~~2.	Determine error levels of given image~~  
 ~~3.	Isolate areas with high error levels~~  
