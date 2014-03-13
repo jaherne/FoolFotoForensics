@@ -3,14 +3,14 @@ from PIL import Image, ImageFilter
 import argparse, os
 import fff
 
-original = fff.openImage("images/books-edited.jpg")
+original = fff.open_image("images/books-edited.jpg")
 fuzz = fff.openImage("images/books-edited.jpg")
 final = fff.openImage("images/books-edited.jpg")
 
 origArr = original.load()
 original.save("images/test.jpg", quality=75)
-new = fff.openImage("images/test.jpg")
-ela = fff.openImage("images/test.jpg")
+new = fff.open_image("images/test.jpg")
+ela = fff.open_image("images/test.jpg")
 newArr = new.load()
 
 elaArr = ela.load()

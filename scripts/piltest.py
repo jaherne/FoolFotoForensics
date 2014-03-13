@@ -14,7 +14,7 @@ qual = 75
 scale = 15
 
  # load the original and convert to YCbCr
-original = fff.openImage(args.image)
+original = fff.open_image(args.image)
 if (args.show):
 	original.show()
 if (args.verbose):
@@ -31,7 +31,7 @@ if (args.verbose):
 	print("Saving at quality: " + str(qual))
 
 # open worse quality image
-new = fff.openImage("images/test.jpg")
+new = fff.open_image("images/test.jpg")
 newarr = new.load()
 if (args.show):
 	new.show()

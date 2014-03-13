@@ -5,14 +5,14 @@
 from PIL import Image, ImageFilter
 import os
 
-# openImage
+# open_image
 # Opens an image and converts to YCbCr
 # Parameters: 
 # 	file: the filename of the image to open
 # Returns:
 #	image: the image as a PIL object
 
-def openImage(file):
+def open_image(file):
 	image = Image.open(file).convert("YCbCr")
 	return image
 
