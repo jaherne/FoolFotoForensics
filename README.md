@@ -25,4 +25,4 @@ Completed:
 ~~2.	Determine error levels of given image~~  
 ~~3.	Isolate areas with high error levels~~  
 ~~4.	Change brightness such that the error level is minimized~~  
-~~5.	Save back to original iimage.~~
+~~5.	Save back to original image.~~
