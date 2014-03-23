@@ -27,7 +27,7 @@ def open_image(file):
 #   origArr: The pixel array of the original image
 #   newArr: The pixel array of the resaved image
 #   scale: The magnification amount
-#   image: The original image object
+#   dimensions: The x and y size of the image
 #   value: Y, Cb, or Cr to do ela on. Defaults to Y
 # Returns:
 #   errArr: The pixel array of the error analyis
@@ -40,6 +40,7 @@ def ela(origArr, newArr, scale, dimensions, value="Y"):
     width = dimensions[0]
     height = dimensions[1]
     errArr = newArr
+
     for y in range(height):
         for x in range(width):
             if value == "Y":
@@ -66,19 +67,22 @@ def ela(origArr, newArr, scale, dimensions, value="Y"):
 #   origArr: The pixel array of the original image
 #   newArr: The pixel array of the resaved image
 #   errArr: The pixel array of the error analysis
-#   image: The original image object
 #   scale: The magnification amount
+#   dimensions: The x and y size of the image
 # Returns:
 #   fuzzArr: The original picture's pixel array with fuzzing
 
 
-def fuzz(origArr, newArr, errArr, image, scale):
+def fuzz(origArr, newArr, errArr, scale, dimensions):
     fuzzArr = origArr
     difflist = []
-    for y in range(image.size[1]):
-        for x in range(image.size[0]):
+    width = dimensions[0]
+    height = dimensions[1]
+
+    for y in range(height):
+        for x in range(width):
             diff = (
-                errArr[x, y][0] + errArr[x, y][1], errArr[x, y][2]) / scale
+                (errArr[x, y][0] + errArr[x, y][1] + errArr[x, y][2]) / scale)
             if diff >= 40:
                 fuzzArr[x, y] = (
                     newArr[x, y][0], newArr[x, y][1], newArr[x, y][2])

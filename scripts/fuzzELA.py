@@ -33,6 +33,7 @@ tmp_image_location = "images/worse.jpg"  # Where to store the low quality image
 original = fff.open_image(image)
 fuzzed = fff.open_image(image)
 orig_pixels = original.load()
+fuzz_pixels = fuzzed.load()
 dimensions = [original.size[0], original.size[1]]
 
 # Resave image for ELA comparison
@@ -47,6 +48,13 @@ err_pixels = fff.ela(orig_pixels, err_pixels, args.scale, dimensions)
 
 if (args.graphics):
     error.show()
-error.show()
+
+# Fuzz the image
+fuzz_pixels = fff.fuzz(fuzz_pixels, worse_pixels, err_pixels, args.scale, dimensions)
+fuzzed.save("images/books-posttool.jpg", quality=100)
+
+if (args.graphics):
+    pass
+
 # End of execution cleanup
-os.remove("images/worse.jpg")
+os.remove(tmp_image_location)
