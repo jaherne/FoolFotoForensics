@@ -54,7 +54,13 @@ fuzz_pixels = fff.fuzz(fuzz_pixels, worse_pixels, err_pixels, args.scale, dimens
 fuzzed.save("images/books-posttool.jpg", quality=100)
 
 if (args.graphics):
-    pass
+    fuzzed.save("images/worse2.jpg", quality=args.quality)
+    error2 = fff.open_image("images/worse2.jpg")
+    err2_pixels = error2.load()
+    err2_pixels = fff.ela(fuzz_pixels, err2_pixels, args.scale, dimensions)
+    error2.show()
+    os.remove("images/worse2.jpg")
+
 
 # End of execution cleanup
 os.remove(tmp_image_location)
