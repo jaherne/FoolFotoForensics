@@ -17,7 +17,7 @@ To Do list:
 3.  Implement new system for deciding what pixels are fuzzed  
 4.  Cleanup fuzzELA.py of testing code  
 5.  Add more flags per written plan  
-6.  Add maximum verbosity
+6.  Add maximum verbosity  
 7.  Improve documentation  
 8.	Test lots and lots  
 

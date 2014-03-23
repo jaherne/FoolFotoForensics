@@ -14,8 +14,8 @@ parser = argparse.ArgumentParser()
 #parser.add_argument("image", help="Image you want to analyze")
 parser.add_argument("-v", "--verbose", help="verbose output", action="store_true")
 parser.add_argument("-g", "--graphics", help="show ELA and post fuzzing ELA", action="store_true")
-parser.add_argument("-q", "--quality", help="Quality level of resaved image. Lower quality means larger error levels", default=75)
-parser.add_argument("-s", "--scale", help="Amount to boost error levels by. Larger scale means larger error levels", default=15)
+parser.add_argument("-q", "--quality", help="Quality level of resaved image. Lower quality means larger error levels. Defaults to 75.", default=75)
+parser.add_argument("-s", "--scale", help="Amount to boost error levels by. Larger scale means larger error levels. Defaults to 15.", default=15)
 '''
     TODO:
     Add remaining command line arguments
