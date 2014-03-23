@@ -83,7 +83,7 @@ def fuzz(origArr, newArr, errArr, scale, dimensions):
         for x in range(width):
             diff = (
                 (errArr[x, y][0] + errArr[x, y][1] + errArr[x, y][2]) / scale)
-            if diff >= 40:
+            if diff >= 38:
                 fuzzArr[x, y] = (
                     newArr[x, y][0], newArr[x, y][1], newArr[x, y][2])
 
