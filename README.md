@@ -13,16 +13,21 @@ Quicktest.py reads in an image and converts to YCbCr. It is then saved at a lowe
 
 Piltest.py performs a similar function, but without the fuzzing at the end. Its purpose is to analyze the already changed image, and show that ELA will no longer work. 
 
-Next Steps:    
-1.	Refactor code with functions  (IN PROGRESS)  
-2.	Combine the two scripts into a single file  
-3.  Improve documentation  
-4.	Test lots and lots
+To Do list:   
+1.  Integrate ImageChops  
+2.  Cleanup second ELA, currently just PoC in fuzzELA.py  
+3.  Implement new system for deciding what pixels are fuzzed  
+4.  Cleanup fuzzELA.py of testing code  
+5.  Add more flags per written plan  
+6.  Improve documentation  
+7.	Test lots and lots  
 
 
 Completed:  
-~~1.  Build out script functionality (command arguments, etc)~~      
+~~1.    Build out script functionality (command arguments, etc)~~      
 ~~2.	Determine error levels of given image~~  
 ~~3.	Isolate areas with high error levels~~  
 ~~4.	Change brightness such that the error level is minimized~~  
-~~5.	Save back to original image.~~
+~~5.	Save back to original image.~~  
+~~6.  Refactor code with functions~~  
+~~7.  Combine the two scripts into a single file~~  
