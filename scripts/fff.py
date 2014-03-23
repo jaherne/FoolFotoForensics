@@ -33,13 +33,15 @@ def open_image(file):
 #   errArr: The pixel array of the error analyis
 
 
-def ela(origArr, newArr, scale, image, value="Y"):
+def ela(origArr, newArr, scale, dimensions, value="Y"):
     if value != "Y" and value != "Cb" and value != "Cr":
         return 1  # Value is not specified correctly
 
+    width = dimensions[0]
+    height = dimensions[1]
     errArr = newArr
-    for y in range(image.size[1]):
-        for x in range(image.size[0]):
+    for y in range(height):
+        for x in range(width):
             if value == "Y":
                 Yerr = abs(origArr[x, y][0] - newArr[x, y][0])
                 Cerr = origArr[x, y][1]
@@ -76,7 +78,7 @@ def fuzz(origArr, newArr, errArr, image, scale):
     for y in range(image.size[1]):
         for x in range(image.size[0]):
             diff = (
-                errArr[x, y][0] + errArr[x, y][1] errArr[x, y][2]) / scale
+                errArr[x, y][0] + errArr[x, y][1], errArr[x, y][2]) / scale
             if diff >= 40:
                 fuzzArr[x, y] = (
                     newArr[x, y][0], newArr[x, y][1], newArr[x, y][2])
